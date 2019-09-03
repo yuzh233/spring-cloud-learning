@@ -1,0 +1,19 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: frign-hello
+
+logging:
+  level:
+    yuzh.xyz.hello.service.HelloFeignService: debug
+
+
+# Feign \u7684\u8C03\u7528\u5206\u4E3A\u4E24\u5C42\uFF1ARibbon \u7684\u8C03\u7528\u548C Hystrix \u7684\u8C03\u7528\uFF0C\u9AD8\u7248\u672C\u7684 Hystrix \u9ED8\u8BA4\u5173\u95ED\u3002
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLever: basic

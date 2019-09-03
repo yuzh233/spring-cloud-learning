@@ -1,0 +1,20 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: consumer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# \u914D\u7F6E\u8BF7\u6C42GZIP\u538B\u7F29
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json # \u914D\u7F6E\u538B\u7F29\u652F\u6301\u7684MIME TYPE
+      min-request-size: 2048 # \u914D\u7F6E\u538B\u7F29\u6570\u636E\u5927\u5C0F\u7684\u4E0B\u9650
+    response:
+      enabled: true # \u914D\u7F6E\u54CD\u5E94GZIP\u538B\u7F29

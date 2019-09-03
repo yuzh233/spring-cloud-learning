@@ -1,0 +1,44 @@
+server:
+  port: 7777
+
+spring:
+  application:
+    name: ribbon-banlance-client
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+ribbon-client:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    # 建立连接时间，单位 ms
+    ConnetTimeout: 3000
+    # 读取资源时间，单位 ms
+    ReadTimeout: 3000
+    # 对第一次请求的服务的重试次数
+    MaxAutoRetries: 0
+    # 要重试的下一个服务的最大数量（不包括第一个服务）
+    MaxAutoRetriesNextServer: 1
+    OkToRetryOnAllOperations: true
+
+ribbon:
+  eager-load:
+    # 开启饥饿加载：应用启动时加载所有配置项的应用程序上下文
+    enabled: true
+    # 需要被加载的服务，逗号分割。
+    clients: ribbon-client
+
+#  eureka:
+#    # 禁用 eureka 注册中心，手动指定服务地址，配置在：client:ribbon:listOfServers
+#    enabled: false
+
+#client:
+#  ribbon:
+#    # 手动指定服务地址
+#    listOfServers: http://localhost:8081, http://localhost:8080

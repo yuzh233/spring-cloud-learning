@@ -1,0 +1,14 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: feign-okhttp
+
+
+feign:
+  httpclient:
+    enabled: false
+  # \u4F7F\u7528 OkHttp \u4EE3\u66FF\u9ED8\u8BA4
+  okhttp:
+    enabled: true
+

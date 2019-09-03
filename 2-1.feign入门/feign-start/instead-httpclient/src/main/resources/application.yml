@@ -1,0 +1,14 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: feign-httpclient
+
+feign:
+  # \u4F7F\u7528 HttpClient \u4EE3\u66FF\u9ED8\u8BA4\u7684 client
+  httpclient:
+    enabled: true
+
+logging:
+  level:
+    yuzh.xyz.insteadhttpclient.service.HelloFeignService: debug

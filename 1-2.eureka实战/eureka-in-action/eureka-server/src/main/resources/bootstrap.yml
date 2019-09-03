@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    # 对应 config-serve 中的 eureka-server.yml 文件
+    name: eureka-server
+  cloud:
+    config:
+      # config-server 的地址
+      uri: http://localhost:8888
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
