@@ -17,10 +17,9 @@
     </properties>
 
     <dependencies>
-        <!--    本身是一个微服务，需要注册被发现。    -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
 

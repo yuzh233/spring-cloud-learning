@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: hystrix-dashboard-turbine
+
+server:
+  port: 9088
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+# hystrix dashboard \u96C6\u7FA4\u76D1\u63A7
+turbine:
+  app-config: hello-service, provider-service
+  cluster-name-expression: "'default'"
