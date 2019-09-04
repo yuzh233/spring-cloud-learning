@@ -1,0 +1,25 @@
+# --------------------------------------------------------------  测试 forward 转发到本地接口
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 5555
+
+eureka:
+  client:
+    service-url:
+      default-zone: http:/localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    # 原来的 client-a 服务还是能调用
+    client-a:
+      path: /client/**
+      serviceId: client-a
+    # 访问 http://localhost:5555/zuul-forward?a=1&b=6 时跳到 /client 接口
+    test-zuul-forward:
+      path: /zuul-forward/**
+      url: forward:/client

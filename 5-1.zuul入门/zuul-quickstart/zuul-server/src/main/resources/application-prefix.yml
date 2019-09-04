@@ -1,0 +1,22 @@
+# --------------------------------------------------------------  路由前缀
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 5555
+
+eureka:
+  client:
+    service-url:
+      default-zone: http:/localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  # 指定前缀，访问必须带上前缀 /pre/client/**
+  prefix: /pre
+  routes:
+    client-a:
+      path: /client/**
+      serviceId: client-a

@@ -1,0 +1,37 @@
+# --------------------------------------------------------------  使用 Ribbon 负载均衡替代默认 Eureka 负载均衡的配置
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 5555
+
+# eureka 配置可以不用了
+#eureka:
+#  client:
+#    service-url:
+#      default-zone: http:/localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+
+zuul:
+  routes:
+    ribbon-route:
+      # 访问路径（注意：访问时的前缀不是 client 了，而是 ribbon）
+      path: /ribbon/**
+      # 引用下面的 ribbon-route-test 配置
+      serviceId: ribbon-route-test
+
+ribbon:
+  eureka:
+    # 禁止 Ribbon 使用 Eureka
+    enabled: false
+
+# zuul 的 ribbon 负载均衡配置
+ribbon-route-test:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    # Ribbon LB Strategy
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # client services for Ribbon LB
+    listOfServers: localhost:7070, localhost:7071

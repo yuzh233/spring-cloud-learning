@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 5555
+
+eureka:
+  client:
+    service-url:
+      default-zone: http:/localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    client-a:
+      # \u6240\u6709\u4EE5 client \u5F00\u5934\u7684\u8BF7\u6C42\u6620\u5C04\u5230 client-a \u8FD9\u4E2A\u670D\u52A1\u4E2D\u53BB
+      path: /client/**
+      serviceId: client-a
+      # \u624B\u52A8\u6307\u5B9A\u654F\u611F\u5934\uFF0C\u654F\u611F\u5934\u5C06\u4E0D\u4F1A\u4F20\u9012\u3002
+      sensitiveHeaders:
