@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: hystrix-exception-handle
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761
+  instance:
+    prefer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      sc-provider-service:
+        errorDecoder: xyz.yuzh.learning.springcloud.hystrix.exceptiondemo.service.FeignBadRequestExceptionDecoder
+
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 3000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 5000
