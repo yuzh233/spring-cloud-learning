@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 5555
+
+eureka:
+  client:
+    service-url:
+      default-zone: http:/localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    client-a:
+      path: /client/**
+      serviceId: client-a
+      # sensitiveHeaders:
+
+# actuator 启用所有的监控端点. “*” 号代表启用所有的监控端点，可以单独启用，例如，health，info，metrics
+# spring boot 升为 2.0 后，为了安全，默认 Actuator 只暴露了2个端点，heath 和 info
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
