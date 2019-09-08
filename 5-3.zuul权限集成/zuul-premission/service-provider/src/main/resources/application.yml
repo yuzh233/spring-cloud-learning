@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  servlet:
+    # web \u6839\u76EE\u5F55
+    context-path: /uaa
+
+spring:
+  application:
+    name: service-provider
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
