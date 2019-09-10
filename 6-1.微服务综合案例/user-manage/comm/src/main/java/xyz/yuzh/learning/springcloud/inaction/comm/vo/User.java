@@ -17,7 +17,7 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = -4083327605430665846L;
 
-    public final static String CONTEXT_KEY_USERID = "x-customs-user";
+    public final static String CONTEXT_KEY_USER_ID = "x-customs-user";
 
     /**
      * 用户ID
@@ -31,7 +31,7 @@ public class User implements Serializable {
     }
 
     public User(Map<String, String> headers) {
-        userId = headers.get(CONTEXT_KEY_USERID);
+        userId = headers.get(CONTEXT_KEY_USER_ID);
     }
 
 
@@ -42,7 +42,7 @@ public class User implements Serializable {
      */
     public Map<String, String> toHttpHeaders() {
         Map<String, String> headers = new HashMap<>();
-        headers.put(CONTEXT_KEY_USERID, userId);
+        headers.put(CONTEXT_KEY_USER_ID, userId);
         return headers;
     }
 

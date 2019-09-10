@@ -1,0 +1,11 @@
+# config 配置要放在引导中
+spring:
+  cloud:
+    config:
+      label: master
+      # 配置中心服务地址
+      uri: http://localhost:9090
+      # 配置仓库中的文件前缀
+      name: config-info
+      # 环境
+      profile: dev

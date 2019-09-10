@@ -12,28 +12,40 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import xyz.yuzh.learning.springcloud.inaction.comm.context.SpringCloudHystrixConcurrencyStrategy;
 import xyz.yuzh.learning.springcloud.inaction.comm.intercepter.FeignUserContextInterceptor;
 import xyz.yuzh.learning.springcloud.inaction.comm.intercepter.RestTemplateUserContextInterceptor;
+import xyz.yuzh.learning.springcloud.inaction.comm.intercepter.ServiceInvocationInterceptor;
 import xyz.yuzh.learning.springcloud.inaction.comm.intercepter.UserContextInterceptor;
 
+/**
+ * 通用配置
+ *
+ * @author Harry
+ */
 @Configuration
 @EnableWebMvc
 public class CommonConfiguration extends WebMvcConfigurerAdapter {
+
 
     /**
      * 请求拦截器
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        // 没带 x-customs-user 头不允许调用
         registry.addInterceptor(new UserContextInterceptor());
+        // 没带 x-service-call 头不允许调用（在网关层添加 x-service-call 请求头实现所有服务只能由网关调用）
+        registry.addInterceptor(new ServiceInvocationInterceptor());
     }
 
+
     /**
-     * 创建Feign请求拦截器，在发送请求前设置认证的用户上下文信息
+     * 创建 Feign 请求拦截器，在发送请求前设置认证的用户上下文信息
      */
     @Bean
     @ConditionalOnClass(Feign.class)
     public FeignUserContextInterceptor feignTokenInterceptor() {
         return new FeignUserContextInterceptor();
     }
+
 
     /**
      * RestTemplate拦截器

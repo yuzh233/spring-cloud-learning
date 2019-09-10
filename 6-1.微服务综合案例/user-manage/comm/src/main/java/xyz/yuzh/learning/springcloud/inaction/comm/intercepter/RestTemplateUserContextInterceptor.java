@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * RestTemplate传递用户上下文
+ * RestTemplate 调用之前传递用户上下文
+ *
+ * @author Harry
  */
 public class RestTemplateUserContextInterceptor implements ClientHttpRequestInterceptor {
 

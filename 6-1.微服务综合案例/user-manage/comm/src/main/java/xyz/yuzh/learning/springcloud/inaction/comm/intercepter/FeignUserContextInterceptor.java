@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 
 /**
- * Feign传递用户上下文
+ * Feign 调用之前传递用户上下文
+ *
+ * @author Harry
  */
 public class FeignUserContextInterceptor implements RequestInterceptor {
 
     @Override
     public void apply(RequestTemplate template) {
-//		User user = UserContextHolder.currentUser();
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         Enumeration<String> headerNames = request.getHeaderNames();

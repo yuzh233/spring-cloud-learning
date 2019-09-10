@@ -21,11 +21,11 @@
 
     <modules>
         <module>comm</module>
-        <module>config-server</module>
-        <module>data-service</module>
-        <module>eureka-server</module>
-        <module>user-service</module>
-        <module>zuul-server</module>
+        <module>config-server-9090</module>
+        <module>data-service-8099</module>
+        <module>eureka-server-8761</module>
+        <module>user-service-9091</module>
+        <module>zuul-server-7777</module>
         <module>hystrix-dashboard</module>
     </modules>
 

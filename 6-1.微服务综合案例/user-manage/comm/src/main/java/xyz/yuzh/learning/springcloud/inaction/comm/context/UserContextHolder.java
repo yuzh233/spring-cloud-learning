@@ -3,11 +3,13 @@ package xyz.yuzh.learning.springcloud.inaction.comm.context;
 import xyz.yuzh.learning.springcloud.inaction.comm.vo.User;
 
 /**
- * 用户上下文
+ * 用于在服务间存放用户上下文
+ *
+ * @author Harry
  */
 public class UserContextHolder {
 
-    public static ThreadLocal<User> context = new ThreadLocal<User>();
+    public static ThreadLocal<User> context = new ThreadLocal<>();
 
     public static User currentUser() {
         return context.get();
