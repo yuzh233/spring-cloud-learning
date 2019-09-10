@@ -1,0 +1,25 @@
+server:
+  port: 9099
+
+spring:
+  application:
+    name: hystrix-dashboard
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: hystrix.stream
+
+turbine:
+  appConfig: user-service, zuul-service, data-service
+  clusterNameExpression: "'default'"
+

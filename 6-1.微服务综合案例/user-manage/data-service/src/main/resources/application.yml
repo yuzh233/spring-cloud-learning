@@ -1,0 +1,30 @@
+server:
+  port: 8099
+
+spring:
+  application:
+    name: data-service
+
+  cloud:
+    config:
+      label: master
+      # 配置中心服务地址
+      uri: http://localhost:9090
+      # 配置仓库中的文件前缀
+      name: application
+      # 环境
+      profile: dev
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+# 开放 hystrix 监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
