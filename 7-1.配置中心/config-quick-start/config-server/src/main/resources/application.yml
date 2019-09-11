@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yuzh233/spring-cloud-learning-config-server.git
+#          username:
+#          password:
+          # \u641C\u7D22\u6307\u5B9A\u76EE\u5F55\u4E0B\u7684\u914D\u7F6E\u6587\u4EF6
+          search-paths: demo2
+
+server:
+  port: 9090

@@ -1,0 +1,13 @@
+# 配置中心的配置必须写在 bootstrap.yml 文件中。spring boot 启动时，bootstrap.yml 会优先于 application.yml 加载。
+
+spring:
+  cloud:
+    config:
+      # 指定分支
+      label: master
+      # 指定 config server 地址，注意：不是远程配置中心仓库的地址！！
+      uri: http://localhost:9090
+      # 文件名
+      name: application
+      # 哪个环境的文件
+      profile: dev
